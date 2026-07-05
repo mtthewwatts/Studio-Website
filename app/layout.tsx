@@ -1,5 +1,9 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { SiteProvider } from '@/lib/site-context'
+import Topbar from '@/components/Topbar'
+import MenuOverlay from '@/components/MenuOverlay'
+import SearchOverlay from '@/components/SearchOverlay'
 
 export const metadata: Metadata = {
   title: 'Matthew Watts — Technologist + Creative',
@@ -13,7 +17,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SiteProvider>
+          <Topbar />
+          <MenuOverlay />
+          <SearchOverlay />
+          {children}
+        </SiteProvider>
+      </body>
     </html>
   )
 }

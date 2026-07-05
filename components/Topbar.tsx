@@ -1,32 +1,51 @@
-'use client'
+'use client';
 
-interface TopbarProps {
-  onMenuOpen: () => void
-  theme: 'dark' | 'light'
-  onThemeToggle: () => void
-}
+import Link from 'next/link';
+import { useSite } from '@/lib/site-context';
+import { IconMenuToggle, IconMoon, IconSearch, IconSun } from './icons';
 
-export default function Topbar({ onMenuOpen, theme, onThemeToggle }: TopbarProps) {
+export default function Topbar() {
+  const { isMenuOpen, toggleMenu, isSearchOpen, toggleSearch, theme, toggleTheme } = useSite();
+
   return (
     <header className="topbar">
-      <a href="/" className="topbar__logo">Homepage</a>
-      <nav className="topbar__controls">
-        <button className="topbar__btn" onClick={onThemeToggle} aria-label="Toggle theme">
-          {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
-          <span aria-hidden="true">{theme === 'dark' ? '☼' : '◐'}</span>
+      <Link href="/" className="topbar__logo">
+        Matthew Watts
+      </Link>
+
+      <div className="topbar__controls">
+        <button
+          type="button"
+          className="topbar__btn"
+          onClick={toggleTheme}
+          aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+        >
+          <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
+          {theme === 'dark' ? <IconSun width={16} height={16} /> : <IconMoon width={16} height={16} />}
         </button>
-        <button className="topbar__btn" aria-label="Search">
-          Search
+
+        <button
+          type="button"
+          className="topbar__btn"
+          onClick={toggleSearch}
+          aria-expanded={isSearchOpen}
+          aria-controls="site-search"
+        >
+          <span>Search</span>
+          <IconSearch width={16} height={16} />
         </button>
-        <button className="topbar__btn" onClick={onMenuOpen} aria-label="Open menu">
-          Menu
-          <svg width="16" height="12" viewBox="0 0 16 12" fill="none" aria-hidden="true">
-            <line x1="0" y1="1" x2="16" y2="1" stroke="currentColor" strokeWidth="1.5"/>
-            <line x1="0" y1="6" x2="16" y2="6" stroke="currentColor" strokeWidth="1.5"/>
-            <line x1="0" y1="11" x2="16" y2="11" stroke="currentColor" strokeWidth="1.5"/>
-          </svg>
+
+        <button
+          type="button"
+          className="topbar__btn"
+          onClick={toggleMenu}
+          aria-expanded={isMenuOpen}
+          aria-controls="site-menu"
+        >
+          <span>Menu</span>
+          <IconMenuToggle open={isMenuOpen} width={16} height={16} />
         </button>
-      </nav>
+      </div>
     </header>
-  )
+  );
 }
