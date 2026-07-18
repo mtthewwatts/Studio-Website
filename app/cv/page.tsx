@@ -7,12 +7,18 @@ export default function CVPage() {
   return (
     <main className="page">
       <div className="cv">
-        <PageHero title="CV">
+        <PageHero
+          title="CV"
+          headingFont="body"
+          headingSize="small"
+          descriptionEmphasis
+          descriptionCentered
+        >
           A collection of information that would typically be found in my resume or my
           &lsquo;Curriculum Vitae&rsquo; (CV).
         </PageHero>
 
-        <section className="cv__section">
+        <section className="cv__section cv__section--centered">
           <p className="t-eyebrow">{CV_EDUCATION.eyebrow}</p>
           <div className="cv-entry">
             <div className="cv-entry__role">

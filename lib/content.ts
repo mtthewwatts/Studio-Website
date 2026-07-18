@@ -42,12 +42,10 @@ export const CV_EXPERIENCE: CVExperience[] = [
       'Worked on HMI development, industrial automation workflows, and pneumatic system integration using tools such as Ignition and Node-RED. Supported the development and delivery of Ideas Clinic modules across multiple courses, contributing to the design, implementation and troubleshooting of mechatronic lab systems.',
   },
   {
-    // TODO: the company name on this entry was cut off in the screenshot
-    // (looked like "...rest ?raser") — fill in the real org name.
-    role: 'TODO — role name',
-    org: 'Co-Op, TODO — company name',
-    location: 'Barrhead, Ontario',
-    dateRange: 'TODO — date range',
+    role: 'Engineering Student',
+    org: 'Co-Op, West Fraser',
+    location: 'Barwick, Ontario',
+    dateRange: 'May 2024 - Aug 2024',
     description:
       'Supported mechanical design and engineering documentation activities using SolidWorks, with a focus on drawing validation, CAD revisions, and design quality. Worked closely with engineering teams to ensure released documentation met manufacturing and design requirements.',
   },
