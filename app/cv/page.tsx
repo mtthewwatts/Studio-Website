@@ -9,7 +9,6 @@ export default function CVPage() {
       <div className="cv">
         <PageHero
           title="CV"
-          headingFont="body"
           headingSize="small"
           descriptionEmphasis
           descriptionCentered

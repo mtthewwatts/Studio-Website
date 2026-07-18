@@ -50,6 +50,15 @@ export function SiteProvider({ children }: { children: ReactNode }) {
     [],
   );
 
+  // Set on <html> (not a nested div) so the CSS var cascade reaches <body>.
+  useEffect(() => {
+    if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+  }, [theme]);
+
   // Lock body scroll while an overlay is open.
   useEffect(() => {
     document.body.style.overflow = isMenuOpen || isSearchOpen ? 'hidden' : '';
@@ -85,7 +94,7 @@ export function SiteProvider({ children }: { children: ReactNode }) {
         toggleTheme,
       }}
     >
-      <div data-theme={theme === 'light' ? 'light' : undefined}>{children}</div>
+      {children}
     </SiteContext.Provider>
   );
 }

@@ -4,7 +4,7 @@ interface PageHeroProps {
   title: string;
   children?: ReactNode;
   withDivider?: boolean;
-  /** 'display' = EB Garamond (default), 'body' = Inter */
+  /** 'body' = Inter (default), 'display' = EB Garamond */
   headingFont?: 'display' | 'body';
   /** 'default' = large hero-style title, 'small' = compact heading */
   headingSize?: 'default' | 'small';
@@ -18,7 +18,7 @@ export default function PageHero({
   title,
   children,
   withDivider = false,
-  headingFont = 'display',
+  headingFont = 'body',
   headingSize = 'default',
   descriptionEmphasis = false,
   descriptionCentered = false,

@@ -43,7 +43,7 @@ export default function BlogPage() {
   return (
     <main className="page">
       <div className="blog">
-        <PageHero title="Blog" withDivider headingFont="body" descriptionEmphasis>
+        <PageHero title="Blog" withDivider descriptionEmphasis>
           A place for more detailed explanations of my previous projects, as well as
           opinion and informational pieces on the things I&rsquo;m interested in.
         </PageHero>
