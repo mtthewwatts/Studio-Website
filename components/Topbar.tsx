@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useSite } from '@/lib/site-context';
 import { IconMenuToggle, IconMoon, IconSearch, IconSun } from './icons';
 
@@ -9,10 +8,6 @@ export default function Topbar() {
 
   return (
     <header className="topbar">
-      <Link href="/" className="topbar__logo">
-        Matthew Watts
-      </Link>
-
       <div className="topbar__controls">
         <button
           type="button"

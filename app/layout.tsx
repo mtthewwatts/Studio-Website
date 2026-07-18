@@ -6,8 +6,15 @@ import MenuOverlay from '@/components/MenuOverlay'
 import SearchOverlay from '@/components/SearchOverlay'
 
 export const metadata: Metadata = {
-  title: 'Matthew Watts — Technologist + Creative',
+  title: {
+    default: 'Matthew Watts — Technologist + Creative',
+    template: '%s | Matthew Watts',
+  },
   description: 'Fourth-year Engineering student at the University of Waterloo. Background in Mechanical and Electrical Design. Exploring the intersection of art and tech.',
+  icons: {
+    // Placeholder favicon — swap for real artwork whenever you have it.
+    icon: '/favicon.svg',
+  },
 }
 
 export default function RootLayout({

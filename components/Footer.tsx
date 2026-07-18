@@ -18,7 +18,7 @@ export default function Footer() {
       </div>
 
       <div>
-        <p className="footer__col-title">Elsewhere</p>
+        <p className="footer__col-title">Networking</p>
         <ul className="footer__social-list">
           {SOCIAL_LINKS.map(({ label, href, Icon }) => (
             <li key={label}>

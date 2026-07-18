@@ -5,10 +5,7 @@ export default function BiographyPage() {
   return (
     <main className="page">
       <div className="biography">
-        <PageHero title="Biography">
-          A closer look at who I am, what I&rsquo;ve worked on, and what I&rsquo;m looking
-          for next.
-        </PageHero>
+        <PageHero title="Biography" />
 
         <div className="biography__body">
           <div className="biography__text">
