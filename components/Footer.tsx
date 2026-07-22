@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div>
-        <p className="footer__col-title">Navigate</p>
+        <p className="footer__col-title">Navigation</p>
         <ul className="footer__nav-list">
           {NAV_ITEMS.map((item) => (
             <li key={item.href}>

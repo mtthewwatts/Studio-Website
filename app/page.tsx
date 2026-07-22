@@ -15,16 +15,15 @@ export default function HomePage() {
         <h1 className="hero__name">Matthew Watts</h1>
 
         <div className="hero__cta">
-          <Link href="/projects" className="btn btn--filled">
-            Projects
+          <Link href="/biography" className="btn btn--filled">
+            Biography
           </Link>
-          <Link href="/biography" className="btn btn--outline">
-            About
+          <Link href="/projects" className="btn btn--outline">
+            Projects
           </Link>
         </div>
 
         <div className="hero__image-wrap">
-          {/* Drop hands.png into /public — see README */}
           <Image src="/hands.png" alt="" width={1400} height={900} priority />
         </div>
       </section>
