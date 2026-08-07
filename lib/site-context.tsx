@@ -16,10 +16,6 @@ interface SiteContextValue {
   openMenu: () => void;
   closeMenu: () => void;
   toggleMenu: () => void;
-  isSearchOpen: boolean;
-  openSearch: () => void;
-  closeSearch: () => void;
-  toggleSearch: () => void;
   theme: Theme;
   toggleTheme: () => void;
 }
@@ -28,22 +24,11 @@ const SiteContext = createContext<SiteContextValue | undefined>(undefined);
 
 export function SiteProvider({ children }: { children: ReactNode }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [theme, setTheme] = useState<Theme>('dark');
 
-  const openMenu = useCallback(() => {
-    setIsSearchOpen(false);
-    setIsMenuOpen(true);
-  }, []);
+  const openMenu = useCallback(() => setIsMenuOpen(true), []);
   const closeMenu = useCallback(() => setIsMenuOpen(false), []);
   const toggleMenu = useCallback(() => setIsMenuOpen((v) => !v), []);
-
-  const openSearch = useCallback(() => {
-    setIsMenuOpen(false);
-    setIsSearchOpen(true);
-  }, []);
-  const closeSearch = useCallback(() => setIsSearchOpen(false), []);
-  const toggleSearch = useCallback(() => setIsSearchOpen((v) => !v), []);
 
   const toggleTheme = useCallback(
     () => setTheme((t) => (t === 'dark' ? 'light' : 'dark')),
@@ -61,23 +46,22 @@ export function SiteProvider({ children }: { children: ReactNode }) {
 
   // Lock body scroll while an overlay is open.
   useEffect(() => {
-    document.body.style.overflow = isMenuOpen || isSearchOpen ? 'hidden' : '';
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
     return () => {
       document.body.style.overflow = '';
     };
-  }, [isMenuOpen, isSearchOpen]);
+  }, [isMenuOpen]);
 
   // Close on Escape.
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === 'Escape') {
         closeMenu();
-        closeSearch();
       }
     }
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [closeMenu, closeSearch]);
+  }, [closeMenu]);
 
   return (
     <SiteContext.Provider
@@ -86,10 +70,6 @@ export function SiteProvider({ children }: { children: ReactNode }) {
         openMenu,
         closeMenu,
         toggleMenu,
-        isSearchOpen,
-        openSearch,
-        closeSearch,
-        toggleSearch,
         theme,
         toggleTheme,
       }}

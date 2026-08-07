@@ -1,33 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useSite } from '@/lib/site-context';
 import { NAV_ITEMS, SOCIAL_LINKS } from '@/lib/site-data';
-import { BLOG_POSTS } from '@/lib/content';
-import { IconArrowRight, IconClose } from './icons';
+import { IconClose } from './icons';
 
-export interface BlogPostPreview {
-  title: string;
-  date: string;
-  readTime: string;
-  href: string;
-  imageSrc?: string;
-}
-
-const DEFAULT_RECENT_POSTS: BlogPostPreview[] = BLOG_POSTS.slice(0, 3).map((post) => ({
-  title: post.title,
-  date: post.date,
-  readTime: post.readTime,
-  href: `/blog/${post.slug}`,
-  imageSrc: post.imageSrc,
-}));
-
-interface MenuOverlayProps {
-  recentPosts?: BlogPostPreview[];
-}
-
-export default function MenuOverlay({ recentPosts = DEFAULT_RECENT_POSTS }: MenuOverlayProps) {
+export default function MenuOverlay() {
   const { isMenuOpen, closeMenu } = useSite();
 
   return (
@@ -60,20 +38,7 @@ export default function MenuOverlay({ recentPosts = DEFAULT_RECENT_POSTS }: Menu
 
         <div className="menu-overlay__bio">
           <p className="menu-overlay__bio-name">Matthew Watts</p>
-          <p className="t-eyebrow menu-overlay__bio-eyebrow">Technologist + Creative</p>
-
-          <p className="menu-overlay__bio-text">
-            I&rsquo;m Matthew Watts (b. 2004, Northern Ontario, Canada), a fourth year
-            Engineering Student at the University of Waterloo. I have a background in
-            Mechanical and Electrical Design through previous roles in manufacturing,
-            automation, and research. I&rsquo;m looking to bridge into embedded systems
-            design for consumer-facing products for my next experience!
-          </p>
-          <p className="menu-overlay__bio-text">
-            I spend my personal time working in student advocacy and leadership,
-            exploring my interest of the intersection between art + tech and working at
-            becoming a triathlete (swimming is my downfall 😔).
-          </p>
+          <p className="t-eyebrow menu-overlay__bio-eyebrow">Personal Site</p>
 
           <div className="menu-overlay__social-row">
             {SOCIAL_LINKS.map(({ label, href, Icon }) => (
@@ -85,48 +50,14 @@ export default function MenuOverlay({ recentPosts = DEFAULT_RECENT_POSTS }: Menu
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                <Icon width={20} height={20} />
+                <Icon width={64} height={64} />
               </a>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="menu-overlay__recent">
-        <div className="menu-overlay__footer">
-          <span className="menu-overlay__footer-label">Recent blog posts</span>
-          <Link href="/blog" className="menu-overlay__view-all" onClick={closeMenu}>
-            <span>View all</span>
-            <IconArrowRight width={14} height={14} />
-          </Link>
-        </div>
-
-        {recentPosts.length > 0 && (
-          <ul className="menu-overlay__posts-grid">
-            {recentPosts.slice(0, 3).map((post) => (
-              <li key={post.href} className="menu-overlay__post">
-                <Link href={post.href} className="menu-overlay__post" onClick={closeMenu}>
-                  <div className="menu-overlay__post-text">
-                    <p className="t-label">
-                      {post.date} &middot; {post.readTime}
-                    </p>
-                    <p className="t-body menu-overlay__post-title">{post.title}</p>
-                  </div>
-                  {post.imageSrc && (
-                    <Image
-                      src={post.imageSrc}
-                      alt=""
-                      width={64}
-                      height={64}
-                      className="menu-overlay__post-thumb"
-                    />
-                  )}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+      <div className="menu-overlay__divider" />
     </div>
   );
 }

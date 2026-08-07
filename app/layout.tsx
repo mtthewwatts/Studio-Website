@@ -3,7 +3,7 @@ import './globals.css'
 import { SiteProvider } from '@/lib/site-context'
 import Topbar from '@/components/Topbar'
 import MenuOverlay from '@/components/MenuOverlay'
-import SearchOverlay from '@/components/SearchOverlay'
+import Particles from '@/components/Particles'
 
 export const metadata: Metadata = {
   title: {
@@ -26,9 +26,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <SiteProvider>
+          <Particles />
           <Topbar />
           <MenuOverlay />
-          <SearchOverlay />
           {children}
         </SiteProvider>
       </body>

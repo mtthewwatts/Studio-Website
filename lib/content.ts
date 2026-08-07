@@ -35,14 +35,14 @@ export const CV_EXPERIENCE: CVExperience[] = [
   },
   {
     role: 'Mechatronics Research Assistant',
-    org: "Co-Op, Engineering Idea's Clinic",
+    org: 'Co-Op, University of Waterloo Ideas Clinic',
     location: 'Waterloo, Ontario',
     dateRange: 'Jan 2025 - Apr 2025',
     description:
       'Worked on HMI development, industrial automation workflows, and pneumatic system integration using tools such as Ignition and Node-RED. Supported the development and delivery of Ideas Clinic modules across multiple courses, contributing to the design, implementation and troubleshooting of mechatronic lab systems.',
   },
   {
-    role: 'Engineering Student',
+    role: 'Mill Student (Engineering)',
     org: 'Co-Op, West Fraser',
     location: 'Barwick, Ontario',
     dateRange: 'May 2024 - Aug 2024',
@@ -50,7 +50,7 @@ export const CV_EXPERIENCE: CVExperience[] = [
       'Supported mechanical design and engineering documentation activities using SolidWorks, with a focus on drawing validation, CAD revisions, and design quality. Worked closely with engineering teams to ensure released documentation met manufacturing and design requirements.',
   },
   {
-    role: 'Process Design Intern',
+    role: 'Process Design Assistant',
     org: 'Co-Op, Viryl Technologies',
     location: 'Toronto, Ontario',
     dateRange: 'Sept 2023 - Dec 2023',
@@ -59,7 +59,7 @@ export const CV_EXPERIENCE: CVExperience[] = [
   },
   {
     role: 'Supply Chain Intern',
-    org: 'Co-Op, PepsiCo (Quaker)',
+    org: 'Co-Op, Quaker (PepsiCo)',
     location: 'Peterborough, Ontario',
     dateRange: 'Jan 2023 - Apr 2023',
     description:
@@ -68,56 +68,7 @@ export const CV_EXPERIENCE: CVExperience[] = [
 ];
 
 // ─── Projects ─────────────────────────────────────────────
-// The Figma only had placeholder/lorem copy on these cards — swap in
-// real descriptions and thumbnails whenever you have them.
-
-export interface Project {
-  slug: string;
-  title: string;
-  year: string;
-  description: string;
-  imageSrc?: string;
-}
-
-export const PROJECTS: Project[] = [
-  {
-    slug: 'two-axis-machine',
-    title: 'Two Axis Machine',
-    year: '2025',
-    description:
-      'Retrofit a conveyor system with a pneumatic actuation system with a custom modelled attachment, and integrated with the ignition and HMI system.',
-  },
-  {
-    slug: 'conveyor-retrofit',
-    title: 'Conveyor Retrofit',
-    year: '2025',
-    description: 'Add a real description here — the Figma only had placeholder copy.',
-  },
-  {
-    slug: 'instrumented-crutch',
-    title: 'Instrumented Crutch',
-    year: '2025',
-    description: 'Add a real description here — the Figma only had placeholder copy.',
-  },
-  {
-    slug: 'bionic-bulb',
-    title: 'Bionic Bulb',
-    year: '2025',
-    description: 'Add a real description here — the Figma only had placeholder copy.',
-  },
-  {
-    slug: '1a-cornerstone-project',
-    title: '1A Cornerstone Project',
-    year: '2022',
-    description: 'Add a real description here — the Figma only had placeholder copy.',
-  },
-  {
-    slug: 'electricity-generating-bicycle',
-    title: 'Electricity Generating Bicycle',
-    year: '2022',
-    description: 'Add a real description here — the Figma only had placeholder copy.',
-  },
-];
+// Projects now live as markdown files in content/projects/ — see lib/projects.ts.
 
 // ─── Blog ─────────────────────────────────────────────────
 
