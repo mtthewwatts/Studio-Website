@@ -338,6 +338,63 @@ ul { list-style: none; }
   border-top: 1px solid var(--text);
 }
 
+/* ─── Bottom nav ─────────────────────────────────────── */
+.bottom-nav {
+  background: transparent;
+  padding: 1.6rem 2rem 1.9rem;
+  display: flex;
+  gap: 5rem;
+}
+
+.bottom-nav__col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bottom-nav__label {
+  color: var(--text-dim);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.bottom-nav__link {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  width: fit-content;
+  padding-bottom: 0.15rem;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s;
+}
+
+.bottom-nav__link:hover { color: var(--text); }
+
+.bottom-nav__link--active {
+  color: var(--text);
+  border-bottom-color: var(--text);
+}
+
+.bottom-nav__icons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.bottom-nav__icon-badge {
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s;
+}
+
+.bottom-nav__icon-badge:hover {
+  color: var(--text);
+}
+
 /* ─── Shared page layout ─────────────────────────────── */
 .page {
   padding-top: 6rem;
@@ -806,6 +863,7 @@ button.chip:hover { opacity: 0.75; }
   .hero { padding: 5rem 1.25rem 2rem; }
   .menu-overlay { padding: 1rem 1.25rem 2rem; }
   .menu-overlay__body { grid-template-columns: 1fr; gap: 2.5rem; }
+  .bottom-nav { padding: 1.4rem 1.25rem 1.75rem; gap: 2.5rem; }
 
   .page { padding-left: 1.25rem; padding-right: 1.25rem; }
   .about__body { flex-direction: column-reverse; }
