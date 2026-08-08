@@ -4,6 +4,7 @@ import { SiteProvider } from '@/lib/site-context'
 import Topbar from '@/components/Topbar'
 import MenuOverlay from '@/components/MenuOverlay'
 import Particles from '@/components/Particles'
+import BottomNav from '@/components/BottomNav'
 
 export const metadata: Metadata = {
   title: {
@@ -30,6 +31,7 @@ export default function RootLayout({
           <Topbar />
           <MenuOverlay />
           {children}
+          <BottomNav />
         </SiteProvider>
       </body>
     </html>
