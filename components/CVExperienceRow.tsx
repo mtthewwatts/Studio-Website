@@ -1,6 +1,6 @@
 import type { CVExperience } from '@/lib/content';
 
-export default function CVExperienceRow({ role, org, location, dateRange, description }: CVExperience) {
+export default function CVExperienceRow({ role, org, location, dateRange }: CVExperience) {
   return (
     <div className="cv-entry">
       <div className="cv-entry__role">
@@ -12,8 +12,6 @@ export default function CVExperienceRow({ role, org, location, dateRange, descri
         <p className="cv-entry__location">{location}</p>
         <p className="t-body cv-entry__dates">{dateRange}</p>
       </div>
-
-      <p className="t-body cv-entry__description">{description}</p>
     </div>
   );
 }

@@ -1,28 +1,22 @@
 import PageHero from '@/components/PageHero';
 import CVExperienceRow from '@/components/CVExperienceRow';
-import Footer from '@/components/Footer';
 import { CV_EDUCATION, CV_EXPERIENCE } from '@/lib/content';
 
 export default function CVPage() {
   return (
     <main className="page">
       <div className="cv">
-        <PageHero
-          title="CV"
-          headingSize="small"
-          descriptionEmphasis
-          descriptionCentered
-        >
+        <PageHero title="CV" descriptionEmphasis descriptionFullWidth>
           A collection of information that would typically be found in my resume or my
           &lsquo;Curriculum Vitae&rsquo; (CV).
         </PageHero>
 
-        <section className="cv__section cv__section--centered">
+        <section className="cv__section cv__section--education">
           <p className="t-eyebrow">{CV_EDUCATION.eyebrow}</p>
-          <div className="cv-entry">
+          <div className="cv-entry cv-entry--education">
             <div className="cv-entry__role">
-              <h3 className="cv-entry__title">{CV_EDUCATION.degree}</h3>
-              <p className="t-body cv-entry__org">{CV_EDUCATION.note}</p>
+              <h3 className="cv-entry__degree">{CV_EDUCATION.degree}</h3>
+              <p className="t-body cv-entry__note">{CV_EDUCATION.note}</p>
             </div>
             <div className="cv-entry__meta">
               <p className="cv-entry__location cv-entry__location--strong">{CV_EDUCATION.school}</p>
@@ -33,12 +27,11 @@ export default function CVPage() {
               </p>
             </div>
           </div>
+          <div className="cv__divider" />
         </section>
 
-        <div className="cv__divider" />
-
-        <section className="cv__section">
-          <p className="t-eyebrow">Relevant Experience</p>
+        <section className="cv__section cv__section--roles">
+          <p className="t-eyebrow">Highlighted Roles</p>
           <div className="cv__experience-list">
             {CV_EXPERIENCE.map((entry, i) => (
               <div key={`${entry.role}-${entry.dateRange}`}>
@@ -49,8 +42,6 @@ export default function CVPage() {
           </div>
         </section>
       </div>
-
-      <Footer />
     </main>
   );
 }

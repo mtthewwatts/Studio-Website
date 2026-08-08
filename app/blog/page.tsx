@@ -4,7 +4,6 @@ import { useMemo, useState } from 'react';
 import PageHero from '@/components/PageHero';
 import BlogFilterBar from '@/components/BlogFilterBar';
 import BlogPostRow from '@/components/BlogPostRow';
-import Footer from '@/components/Footer';
 import { BLOG_CATEGORIES, BLOG_POSTS, type BlogCategory } from '@/lib/content';
 
 const POSTS_PER_PAGE = 6;
@@ -85,8 +84,6 @@ export default function BlogPage() {
           </div>
         )}
       </div>
-
-      <Footer />
     </main>
   );
 }

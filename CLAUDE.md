@@ -29,21 +29,22 @@ Design tokens are CSS custom properties on `:root`, with a light-mode override u
 ```
 Dark is the default palette; fonts are loaded via a Google Fonts `@import` at the top of `globals.css` and are explicitly called out in `site-structure.md` as not-yet-finalized (swap the `--font-*` vars + the `@import` URL together).
 
-**Global client state** lives in `lib/site-context.tsx` (`SiteProvider` / `useSite()`) — tracks menu-open, search-open, and theme. It wraps the whole app in `app/layout.tsx`, alongside `Topbar`, `MenuOverlay`, and `SearchOverlay`, which are **always mounted** (not conditionally rendered) so their open/close transitions can animate via CSS class toggles rather than mount/unmount.
+**Global client state** lives in `lib/site-context.tsx` (`SiteProvider` / `useSite()`) — tracks menu-open and theme. It wraps the whole app in `app/layout.tsx`, alongside `Particles` (canvas background), `Topbar`, and `MenuOverlay`, the latter **always mounted** (not conditionally rendered) so its open/close transition can animate via a CSS class toggle rather than mount/unmount. There is no site search and no page footer — both were removed; `MenuOverlay` (nav links, name/eyebrow, social icons) is the only global chrome besides `Topbar`.
 
-**Content is separated from presentation** into two data modules, treated as the single source of truth and imported wherever needed (pages, `MenuOverlay`'s recent-posts list, `SearchOverlay`'s search index):
+**Content is separated from presentation**, treated as the single source of truth and imported wherever needed (pages, `MenuOverlay`'s nav/socials):
 - `lib/site-data.ts` — `NAV_ITEMS`, `SOCIAL_LINKS`
-- `lib/content.ts` — `CV_EDUCATION`, `CV_EXPERIENCE`, `PROJECTS`, `BLOG_POSTS`, `BLOG_CATEGORIES`
+- `lib/content.ts` — `CV_EDUCATION`, `CV_EXPERIENCE`, `BLOG_POSTS`, `BLOG_CATEGORIES`
+- `content/projects/*.md` + `lib/projects.ts` — projects are markdown files (frontmatter: `title`, `year`, `order`, `excerpt`, optional `imageSrc`; body = the long-form write-up rendered via `react-markdown`). `lib/projects.ts` reads them with `gray-matter` and exposes `getAllProjects()` (sorted by `order`), `getProjectSlugs()`, and `getProjectBySlug()`. Add a new project by dropping a new `.md` file in `content/projects/` — no code changes needed.
 
 Page components stay "dumb": e.g. `app/blog/page.tsx` owns filter/search/pagination state (`useState`/`useMemo`) and passes callbacks into presentational children like `BlogFilterBar`, which hold no data themselves.
 
 **Component conventions:**
 - Function declarations (not arrow consts), PascalCase filenames matching the export.
-- `'use client'` is added only where a component actually needs hooks/browser APIs (`Topbar`, `MenuOverlay`, `SearchOverlay`, `BlogFilterBar`, `site-context.tsx`, `app/blog/page.tsx`). Everything else is a Server Component.
+- `'use client'` is added only where a component actually needs hooks/browser APIs (`Topbar`, `MenuOverlay`, `Particles`, `BlogFilterBar`, `site-context.tsx`, `app/blog/page.tsx`). Everything else is a Server Component.
 - Props are typed inline, or destructured directly against a shared type from `lib/content.ts` (e.g. `ProjectCard({ slug, title, ... }: Project)`).
 - Class-name variants are composed with an array + `.filter(Boolean).join(' ')`, not a utility lib — see `components/PageHero.tsx` for the reference pattern (`headingFont`, `headingSize`, `descriptionEmphasis`, `descriptionCentered` props each toggle a modifier class). Reuse this pattern rather than introducing `clsx`/`classnames`.
 - Icons are hand-drawn inline SVGs, all in `components/icons.tsx`, `Icon`-prefixed.
-- Absolute imports use the `@/*` path alias (`@/lib/content`, `@/components/Footer`); same-folder imports are relative.
+- Absolute imports use the `@/*` path alias (`@/lib/content`, `@/lib/projects`); same-folder imports are relative.
 
 ## Known issues / in-progress work
 

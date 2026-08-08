@@ -1,10 +1,10 @@
 'use client';
 
 import { useSite } from '@/lib/site-context';
-import { IconMenuToggle, IconMoon, IconSearch, IconSun } from './icons';
+import { IconMenuToggle, IconMoon, IconSun } from './icons';
 
 export default function Topbar() {
-  const { isMenuOpen, toggleMenu, isSearchOpen, toggleSearch, theme, toggleTheme } = useSite();
+  const { isMenuOpen, toggleMenu, theme, toggleTheme } = useSite();
 
   return (
     <header className="topbar">
@@ -17,17 +17,6 @@ export default function Topbar() {
         >
           <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
           {theme === 'dark' ? <IconSun width={16} height={16} /> : <IconMoon width={16} height={16} />}
-        </button>
-
-        <button
-          type="button"
-          className="topbar__btn"
-          onClick={toggleSearch}
-          aria-expanded={isSearchOpen}
-          aria-controls="site-search"
-        >
-          <span>Search</span>
-          <IconSearch width={16} height={16} />
         </button>
 
         <button

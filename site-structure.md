@@ -38,7 +38,7 @@ app/
   layout.tsx          Root layout — mounts SiteProvider, Topbar, MenuOverlay, SearchOverlay
   globals.css          All design tokens (colors, fonts, spacing) + every component's styles
   page.tsx             Homepage — hero + footer
-  biography/page.tsx   Bio text, portrait placeholder, photo grid
+  about/page.tsx       Bio text, portrait placeholder, photo grid
   cv/page.tsx          Education + experience, pulled from lib/content.ts
   projects/page.tsx    Static grid of ProjectCards
   blog/page.tsx        Filterable list of BlogPostRows (Client Component — has interactive state)
