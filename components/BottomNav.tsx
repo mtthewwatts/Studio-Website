@@ -26,7 +26,7 @@ export default function BottomNav() {
       </div>
 
       <div className="bottom-nav__col">
-        <span className="bottom-nav__label">Connect</span>
+        <span className="bottom-nav__label">&nbsp;Connect</span>
         <div className="bottom-nav__icons">
           {SOCIAL_LINKS.map(({ label, href, Icon }) => (
             <a

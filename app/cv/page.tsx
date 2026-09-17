@@ -7,8 +7,7 @@ export default function CVPage() {
     <main className="page">
       <div className="cv">
         <PageHero title="CV" descriptionEmphasis descriptionFullWidth>
-          A collection of information that would typically be found in my resume or my
-          &lsquo;Curriculum Vitae&rsquo; (CV).
+          Information that would be found on my CV or Resume.
         </PageHero>
 
         <section className="cv__section cv__section--education">

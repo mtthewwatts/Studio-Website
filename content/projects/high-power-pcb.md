@@ -1,5 +1,5 @@
 ---
-title: Personalized Desk Display
+title: High Power PCB
 year: "2026"
 order: 3
 excerpt: Add a real description here — the Figma only had placeholder copy.

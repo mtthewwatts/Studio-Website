@@ -23,7 +23,22 @@ export default function HomePage() {
         </div>
 
         <div className="hero__image-wrap">
-          <Image src="/hands.png" alt="" width={1400} height={900} priority />
+          <Image
+            src="/hands.png"
+            alt=""
+            width={540}
+            height={192}
+            priority
+            className="hero__image hero__image--dark"
+          />
+          <Image
+            src="/hands-black.png"
+            alt=""
+            width={540}
+            height={192}
+            priority
+            className="hero__image hero__image--light"
+          />
         </div>
       </section>
     </main>
