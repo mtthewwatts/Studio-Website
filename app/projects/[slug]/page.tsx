@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import PageHero from '@/components/PageHero';
 import { getProjectBySlug, getProjectSlugs } from '@/lib/projects';
 
@@ -25,20 +27,17 @@ export default async function ProjectDetailPage({
       <div className="project-detail">
         <PageHero title={project.title} />
 
+        {project.imageSrc && (
+          <div className="project-detail__banner">
+            <Image src={project.imageSrc} alt="" fill sizes="(max-width: 900px) 100vw, 900px" priority />
+          </div>
+        )}
+
         <div className="project-detail__body">
           <div className="project-detail__text">
-            <ReactMarkdown>{project.content}</ReactMarkdown>
-          </div>
-
-          <div className="project-detail__image">
-            {project.imageSrc && (
-              <Image
-                src={project.imageSrc}
-                alt=""
-                fill
-                sizes="(max-width: 640px) 100vw, 40vw"
-              />
-            )}
+            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+              {project.content}
+            </ReactMarkdown>
           </div>
         </div>
       </div>

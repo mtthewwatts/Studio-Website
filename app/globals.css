@@ -526,14 +526,14 @@ ul { list-style: none; }
 
 /* ─── Project detail ─────────────────────────────────── */
 .project-detail__body {
-  display: flex;
-  gap: 3rem;
-  align-items: flex-start;
   margin-bottom: 3rem;
 }
 
 .project-detail__text {
-  flex: 1;
+  /* Plain block, so wide tables/code blocks scroll inside the column
+     instead of stretching the article past the viewport. */
+  width: 100%;
+  min-width: 0;
 }
 
 .project-detail__text p {
@@ -588,18 +588,85 @@ ul { list-style: none; }
   margin: 0 0 1.1rem;
 }
 
-.project-detail__image {
+.project-detail__banner {
   position: relative;
-  flex-shrink: 0;
-  width: 380px;
-  max-width: 100%;
-  aspect-ratio: 4 / 3;
-  background: var(--surface);
-  border-radius: 8px;
+  width: 100%;
+  aspect-ratio: 3 / 1;
+  background: var(--border);
+  border-radius: 12px;
   overflow: hidden;
+  margin-bottom: 2.5rem;
 }
 
-.project-detail__image img { object-fit: cover; }
+.project-detail__banner img { object-fit: cover; }
+
+/* Inline imagery from the markdown body. */
+.project-detail__text img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 1.5rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+/* A lone italic line directly after an image reads as its caption. */
+.project-detail__text p em {
+  color: var(--text-muted);
+}
+
+/* display:block lets a wide table scroll on its own rather than
+   stretching the article; max-width keeps it inside the column. */
+.project-detail__text table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 0 0 1.5rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.project-detail__text th,
+.project-detail__text td {
+  border: 1px solid var(--border);
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+  color: var(--text);
+}
+
+.project-detail__text th {
+  background: var(--surface);
+  font-weight: 600;
+}
+
+.project-detail__text thead tr:empty,
+.project-detail__text th:empty { padding: 0; border-width: 0; }
+
+.project-detail__text pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+  margin: 0 0 1.5rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.project-detail__text pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+.project-detail__text hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
 
 /* ─── CV ─────────────────────────────────────────────── */
 .cv__section {
@@ -883,8 +950,8 @@ button.chip:hover { opacity: 0.75; }
 
   .page { padding-left: 1.25rem; padding-right: 1.25rem; }
   .about__body { flex-direction: column-reverse; }
-  .project-detail__body { flex-direction: column; }
-  .project-detail__image { width: 100%; }
+  .project-detail__text table { font-size: 0.85rem; }
+  .project-detail__text pre { font-size: 0.78rem; }
   .about__gallery { grid-template-columns: 1fr; margin-left: 0; margin-right: 0; }
   .cv__section--education, .cv__section--roles { width: 100%; }
   .cv-entry { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
