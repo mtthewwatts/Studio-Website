@@ -15,6 +15,9 @@
   --font-body:    'Inter', system-ui, sans-serif;
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Width of the homepage hands graphic; the bottom nav aligns to its left edge. */
+  --hero-image-width: 700px;
 }
 
 [data-theme="light"] {
@@ -205,7 +208,7 @@ ul { list-style: none; }
 /* ─── Hero image ─────────────────────────────────────── */
 .hero__image-wrap {
   width: 100%;
-  max-width: 700px;
+  max-width: var(--hero-image-width);
   margin: 0 auto;
   opacity: 0.9;
 }
@@ -310,6 +313,7 @@ ul { list-style: none; }
 .menu-overlay__nav-link:hover { color: var(--text-muted); }
 
 .menu-overlay__bio {
+  container-type: inline-size;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -328,12 +332,19 @@ ul { list-style: none; }
   margin-bottom: 1.25rem;
 }
 
+/* A 4-wide grid rather than a wrapping flex row, so when the four icons no
+   longer fit they fall to 2 x 2 instead of leaving a stranded 3 + 1. */
 .menu-overlay__social-row {
-  display: flex;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(4, 64px);
+  justify-content: start;
   gap: 2rem;
   margin-top: 1.5rem;
-  flex-wrap: wrap;
+}
+
+/* 4 x 64px + 3 x 2rem gap = 352px */
+@container (max-width: 351px) {
+  .menu-overlay__social-row { grid-template-columns: repeat(2, 64px); }
 }
 
 .menu-overlay__social-icon {
@@ -356,6 +367,9 @@ ul { list-style: none; }
 .bottom-nav {
   background: transparent;
   padding: 1.6rem 2rem 1.9rem;
+  /* Start from the left edge of the centred hero graphic, then pull back one
+     column's width; falls back to the normal 2rem gutter on narrow pages. */
+  padding-left: max(2rem, calc((100% - var(--hero-image-width)) / 2 - 5rem));
   display: flex;
   gap: 5rem;
 }
