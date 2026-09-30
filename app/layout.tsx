@@ -8,8 +8,8 @@ import BottomNav from '@/components/BottomNav'
 
 export const metadata: Metadata = {
   title: {
-    default: 'Matthew Watts — Technologist + Creative',
-    template: '%s | Matthew Watts',
+    default: 'Matthew Watts',
+    template: '%s',
   },
   description: 'Fourth-year Engineering student at the University of Waterloo. Background in Mechanical and Electrical Design. Exploring the intersection of art and tech.',
   icons: {

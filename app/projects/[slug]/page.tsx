@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -8,6 +9,15 @@ import { getProjectBySlug, getProjectSlugs } from '@/lib/projects';
 
 export function generateStaticParams() {
   return getProjectSlugs().map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  return { title: getProjectBySlug(slug)?.title ?? 'Projects' };
 }
 
 export default async function ProjectDetailPage({

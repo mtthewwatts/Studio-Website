@@ -1,6 +1,11 @@
+import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 import ProjectCard from '@/components/ProjectCard';
 import { getAllProjects } from '@/lib/projects';
+
+export const metadata: Metadata = {
+  title: 'Projects',
+};
 
 export default function ProjectsPage() {
   const projects = getAllProjects();

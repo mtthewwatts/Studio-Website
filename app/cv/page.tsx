@@ -1,6 +1,11 @@
+import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
 import CVExperienceRow from '@/components/CVExperienceRow';
 import { CV_EDUCATION, CV_EXPERIENCE } from '@/lib/content';
+
+export const metadata: Metadata = {
+  title: 'CV',
+};
 
 export default function CVPage() {
   return (
