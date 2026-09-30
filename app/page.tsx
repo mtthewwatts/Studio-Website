@@ -3,7 +3,9 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Main',
+  // Spelled out in full: the root layout's title template only applies to child
+  // segments, and this page shares the root segment, so it never gets the suffix.
+  title: 'Main | Matthew Watts',
 };
 
 export default function HomePage() {
