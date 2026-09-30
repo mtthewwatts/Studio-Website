@@ -13,8 +13,9 @@ export const metadata: Metadata = {
   },
   description: 'Fourth-year Engineering student at the University of Waterloo. Background in Mechanical and Electrical Design. Exploring the intersection of art and tech.',
   icons: {
-    // Placeholder favicon — swap for real artwork whenever you have it.
-    icon: '/favicon.svg',
+    // Cropped from public/hands-black.png — the fingertips, on white.
+    icon: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
   },
 }
 
